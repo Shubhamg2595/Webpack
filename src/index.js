@@ -1,4 +1,4 @@
-import helloWebpack from './hello-webpack';
-import addImage from './add-image';
-helloWebpack();
-addImage();
+import HelloWebpackButton from './components/hello-webpack-button';
+
+const helloWebpackButton = new HelloWebpackButton();
+helloWebpackButton.render();
