@@ -1,4 +1,4 @@
-import './hello-webpack-button.css';
+import './hello-webpack-button.scss';
 
 class HelloWebpackButton {
     render() {
