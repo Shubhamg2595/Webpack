@@ -7,5 +7,14 @@ heading.render();
 const helloWebpackButton = new HelloWebpackButton();
 helloWebpackButton.render();
 
+if(process.env.NODE_ENV === 'production')
+{
+    console.log('Production mode')
+}
+else if(process.env.NODE_ENV === 'development')
+{
+    console.log('development mode')
+}
 
-let test = "hello";
+
+helloWebpackButton.test();
