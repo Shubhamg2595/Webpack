@@ -6,3 +6,6 @@ heading.render();
 
 const helloWebpackButton = new HelloWebpackButton();
 helloWebpackButton.render();
+
+
+let test = "hello";
