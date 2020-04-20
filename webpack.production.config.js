@@ -3,13 +3,23 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        'hello': './src/hello.js',
+        'image': './src/image..js'
+    },
     output: {
-        filename: 'bundle.[contenthash].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, './dist'),
         publicPath: ''
     },
     mode: 'production',
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+            minSize: 7000,
+            automaticNameDelimiter: '_'
+        }
+    },
     module: {
         rules: [
             {
@@ -40,7 +50,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'styles.[contenthash].css'
+            filename: '[name].[contenthash].css'
         }),
         new CleanWebpackPlugin(
             {
@@ -51,9 +61,18 @@ module.exports = {
             }
         ),
         new HtmlWebpackPlugin({
+            filename: 'hello.html',
+            chunks: ['hello', 'vendors~hello~image'],
             title: 'Hello Webpack',
-            template: 'src/index.hbs',
+            template: 'src/template.hbs',
             description: 'Some Description ABout Webpack'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'image.html',
+            chunks: ['image', 'vendors~hello~image'],
+            title: 'Image',
+            template: 'src/template.hbs',
+            description: 'Displaying image'
         }),
     ]
 }   

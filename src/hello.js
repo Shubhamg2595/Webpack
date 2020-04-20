@@ -1,6 +1,6 @@
 import HelloWebpackButton from './components/hello-webpack-button/hello-webpack-button';
 import Heading from './components/heading/heading';
-
+import React from 'react';
 const heading = new Heading();
 heading.render();
 
