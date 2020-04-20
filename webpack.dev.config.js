@@ -2,9 +2,12 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        'hello': './src/hello.js',
+        'image': './src/image..js'
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, './dist'),
         publicPath: ''
     },
@@ -52,9 +55,18 @@ module.exports = {
             }
         ),
         new HtmlWebpackPlugin({
+            filename: 'hello.html',
+            chunks: ['hello'],
             title: 'Hello Webpack',
-            template: 'src/index.hbs',
+            template: 'src/template.hbs',
             description: 'Some Description ABout Webpack'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'image.html',
+            chunks: ['image'],
+            title: 'Image',
+            template: 'src/template.hbs',
+            description: 'Displaying image'
         }),
     ]
 }   
